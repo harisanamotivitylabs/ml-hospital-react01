@@ -49,6 +49,7 @@ const Patientlogin = () => {
       }
     } catch (error) {
       messageAlert(error.message, "error")
+      setIsLoader(false)
     }
   }
   const profiledata=(auth)=>{

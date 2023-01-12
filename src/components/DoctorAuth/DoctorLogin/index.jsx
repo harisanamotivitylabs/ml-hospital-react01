@@ -3,7 +3,7 @@ import { NavLink, useNavigate } from "react-router-dom"
 import doctorLogin from "../../../assets/doctor_login.png"
 import axios from "axios"
 import { baseURL } from "../../../Utils/Api/Api"
-import { authDataStore, getUserData, userDataStore } from "../../../Utils/Utilities/Utilities"
+import { authDataStore, userDataStore } from "../../../Utils/Utilities/Utilities"
 //import { getUserData } from "../../../Utils/Utilities/Utilities"
 import UserContext from "../../../Utils/Context/UserContext"
 import RemoveCookie from "../../../Utils/Hooks/removeCookie"
@@ -49,6 +49,7 @@ const DoctorLogin = () => {
       }
     } catch (error) {
       messageAlert(error.message, "error")
+      setIsLoader(false)
     }
   }
  const profiledata=(auth)=>{
@@ -110,7 +111,7 @@ const DoctorLogin = () => {
                               onChange={handleChange}
                               name='email'
                               aria-describedby='emailHelp'
-                             // pattern='^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$'
+                              pattern='^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$'
                               required
                             />
 
@@ -129,7 +130,7 @@ const DoctorLogin = () => {
                               id='docPassword'
                               name='password'
                               onChange={handleChange}
-                             // pattern='(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}'
+                              pattern='(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}'
                               required
                             />
 
